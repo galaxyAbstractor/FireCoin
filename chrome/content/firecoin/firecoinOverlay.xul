@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://firecoin/skin/style.css" type="text/css"?>
+
+
+<overlay id="httpproxifierOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+// This imports our javascript.
+
+<script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js">
+
+</script>
+
+<toolbarpalette id="BrowserToolbarPalette">
+<toolbarbutton id="firecoin-button" class="toolbarbutton-1"
+    label="FireCoin Donate!" tooltiptext="FireCoin Donate!"
+    onclick="Httpproxifier.onclick(event,content.document.location.href);"/>
+</toolbarpalette>
+
+
+
+</overlay>

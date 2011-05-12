@@ -1,0 +1,7 @@
+#HTTPproxifier-button {
+  list-style-image: url("chrome://httpproxifier/skin/btn_large.png");
+}
+
+toolbar[iconsize="small"] #HTTPproxifier-button {
+  list-style-image: url("chrome://httpproxifier/skin/btn_small.png");
+}
