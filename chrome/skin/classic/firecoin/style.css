@@ -1,7 +1,15 @@
-#HTTPproxifier-button {
-  list-style-image: url("chrome://httpproxifier/skin/btn_large.png");
+.firecoin-button {
+  list-style-image: url("chrome://firecoin/skin/btn_large.png");
 }
 
-toolbar[iconsize="small"] #HTTPproxifier-button {
-  list-style-image: url("chrome://httpproxifier/skin/btn_small.png");
+toolbar[iconsize="small"] .firecoin-button {
+  list-style-image: url("chrome://firecoin/skin/btn_small.png");
+}
+
+.firecoin-button-inactive {
+  list-style-image: url("chrome://firecoin/skin/btn_large_inactive.png");
+}
+
+toolbar[iconsize="small"] .firecoin-button-inactive {
+  list-style-image: url("chrome://firecoin/skin/btn_small_inactive.png");
 }

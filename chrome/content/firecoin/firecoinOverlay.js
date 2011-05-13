@@ -1,11 +1,22 @@
+// @TOREAD: http://forums.mozillazine.org/viewtopic.php?f=19&t=952905
+
 var FireCoin = {
 	onclick: function() {
 	},
 	
 	contentListener: function(evt) {
-		if (!/^(https?|file):/i.test(href))
-            return;
-            alert("test");
+            alert(evt);
+	},
+	
+	getMetaContents:function(mn){
+		var m = document.getElementsByTagName('meta');
+		
+		for(var i in m){
+			if(m[i][i].name == mn){
+				return m[i].content;
+			}
+		}
+		return "nope.avi";
 	}
 }
 
@@ -13,13 +24,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
 	var document = e.target;
 	
 	if (!document.location)
-            return;
+        return;
  
     var href = document.location.href;
  
-    if (!/^(https?|file):/i.test(href))
+    if (!/(http)/i.test(href))
         return;
         
-        FireCoin.contentListener(e);
+    if(href != content.document.location.href)
+    	return;
+    	
+    FireCoin.contentListener(content.document.location.href);
             
  }, false);
