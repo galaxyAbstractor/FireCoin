@@ -13,3 +13,8 @@ toolbar[iconsize="small"] .firecoin-button {
 toolbar[iconsize="small"] .firecoin-button-inactive {
   list-style-image: url("chrome://firecoin/skin/btn_small_inactive.png");
 }
+
+#mainDonateDialog {
+	width:300px;
+	height: 200px;
+}

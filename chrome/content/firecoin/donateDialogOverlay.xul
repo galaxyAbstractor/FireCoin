@@ -2,7 +2,7 @@
 <?xml-stylesheet href="chrome://firecoin/skin/style.css" type="text/css"?>
 
 
-<overlay id="firecoinOverlay"
+<overlay id="donateDialogOverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 // This imports our javascript.
@@ -11,10 +11,7 @@
 
 </script>
 
-<toolbarpalette id="BrowserToolbarPalette">
-<toolbarbutton id="firecoin-button" class="toolbarbutton-1 firecoin-button-inactive"
-    label="FireCoin Donate!" tooltiptext="FireCoin Donate!"
-    onclick="FireCoin.onclick();"/>
-</toolbarpalette>
+<vbox id="mainDonateDialog">
+</vbox>
 
 </overlay>

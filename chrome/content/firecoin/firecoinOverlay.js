@@ -14,6 +14,8 @@
 
 var FireCoin = {
 	onclick: function() {
+		window.openDialog("chrome://firecoin/content/donateDialogOverlay.xul", "Donate BitCoins",
+"chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
 	},
 	
 	/**
