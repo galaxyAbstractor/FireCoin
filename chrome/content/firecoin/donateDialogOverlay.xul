@@ -5,13 +5,27 @@
 <overlay id="donateDialogOverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-// This imports our javascript.
+<!-- This imports our javascript. -->
 
 <script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js">
 
 </script>
 
 <vbox id="mainDonateDialog">
+	<label id="donateTitle" value="Donate BitCoins"/>
+	<label id="firecoinDonatingTo" value="Donating To"/>
+	<label id="firecoinDonatingAddress" value="12jR2BG6kFENU4oZKAd1GmgDpFSp3vSZWv"/>
+	<label id="firecoinMessage" value="Message"/>
+	<textbox id="firecoinMessageBox" value="No message specified by the site No message specified by the site No message specified by the site" rows="2" multiline="true" readonly="true"/>
+	<label id="firecoinAmount" value="Amount"/>
+	<textbox id="firecoinAmountBox" value="" />
+	<checkbox id="firecoinDonateToAuthor" label="Donate 5% to Addon Author?" checked="false"/>
+	<hbox id="firecoinButtonBox">
+		<button label="Cancel"
+		        oncommand="close()"/>
+		<button label="Donate!"
+		        oncommand="alert('You pressed me!');"/>
+	</hbox>
 </vbox>
 
 </overlay>
