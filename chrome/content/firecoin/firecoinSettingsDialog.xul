@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://firecoin/skin/style.css" type="text/css"?>
+
+
+<overlay id="firecoinSettingsDialog"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<!-- This imports our javascript. -->
+
+<script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js">
+
+</script>
+
+<vbox id="mainDonateDialog">
+	<label id="donateTitle" value="Settings"/>
+	<label id="firecoinDonatingTo" value="Username"/>
+	<textbox id="firecoinUsernameBox" value="" />
+	<label id="firecoinDonatingTo" value="Password"/>
+	<textbox id="firecoinPasswordBox" value="" type="password"/>
+	<hbox id="firecoinButtonBox">
+		<button label="Cancel"
+		        oncommand="close()"/>
+		<button label="Save"
+		        oncommand="alert('You pressed me!');"/>
+	</hbox>
+</vbox>
+
+</overlay>

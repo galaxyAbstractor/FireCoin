@@ -2,6 +2,7 @@ Makes it easier for you to donate Bitcoins to siteowners with firefox.
 
 Changelog
 =======
+* 22 May, 2011: Donation dialog done. Settings dialog done.
 * 21 May, 2011: Modal dialog mostly done.
 * 20 May, 2011: Started adding the modal dialog
 * 14 May, 2011: Changed the listener so that when a tab is loaded but hasn't focus, it would still work. Also added markers to the tabs and made so that the button updates when changing tabs.

@@ -18,6 +18,11 @@ var FireCoin = {
 "chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
 	},
 	
+	openSettings: function() {
+		window.openDialog("chrome://firecoin/content/firecoinSettingsDialog.xul", "Settings",
+"chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
+	},
+	
 	/**
 	 * Get the content of a metatag
 	 * @param mn the name of the metatag <meta _name="mn"_ />

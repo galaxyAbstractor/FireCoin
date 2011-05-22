@@ -20,7 +20,24 @@
 	<label id="firecoinAmount" value="Amount"/>
 	<textbox id="firecoinAmountBox" value="" />
 	<checkbox id="firecoinDonateToAuthor" label="Donate 5% to Addon Author?" checked="false"/>
+	<spacer height="5"/>
+	<hbox id="firecoinBalanceBox">
+		<label id="firecoinBalance" value="Balance: "/>
+		<label id="firecoinBalanceValue" value="0.00"/>
+	</hbox>
+	<hbox id="firecoinTotalBox">
+		<label id="firecoinTotal" value="Total: "/>
+		<label id="firecoinTotalValue" value="0.00"/>
+	</hbox>
+	<menuseparator/>
+	<hbox id="firecoinRemainingBox">
+		<label id="firecoinRemaining" value="Remaining: "/>
+		<label id="firecoinRemainingValue" value="0.00"/>
+	</hbox>
+	<spacer height="10"/>
 	<hbox id="firecoinButtonBox">
+		<button label="Settings..."
+		        oncommand="FireCoin.openSettings()"/>
 		<button label="Cancel"
 		        oncommand="close()"/>
 		<button label="Donate!"
