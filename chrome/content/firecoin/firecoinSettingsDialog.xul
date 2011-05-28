@@ -21,7 +21,7 @@
 		<button label="Cancel"
 		        oncommand="close()"/>
 		<button label="Save"
-		        oncommand="alert('You pressed me!');"/>
+		        oncommand="FireCoin.saveSettings();close();"/>
 	</hbox>
 </vbox>
 

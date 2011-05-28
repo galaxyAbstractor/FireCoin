@@ -13,14 +13,50 @@
 ********************************************************************/
 
 var FireCoin = {
+	// Register a new Password Manager
+	passwordManager: Components.classes["@mozilla.org/login-manager;1"].
+	                                getService(Components.interfaces.nsILoginManager),
+	
 	onclick: function() {
 		window.openDialog("chrome://firecoin/content/donateDialogOverlay.xul", "Donate BitCoins",
 "chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
 	},
 	
 	openSettings: function() {
+		
+		
+		
 		window.openDialog("chrome://firecoin/content/firecoinSettingsDialog.xul", "Settings",
 "chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
+		document.getElementById("firecoinUsernameBox").value = FireCoin.getUsername();
+		document.getElementById("firecoinPasswordBox").value = FireCoin.getPassword();
+	},
+	
+	saveSettings: function(){
+		// Get the password from the textboxes
+		var username = document.getElementById("firecoinUsernameBox").value;
+		var password = document.getElementById("firecoinPasswordBox").value;
+		
+		// Register nsLoginInfo
+		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
+                                           Components.interfaces.nsILoginInfo,
+                                           "init");
+		
+		var extLoginInfo = new nsLoginInfo('chrome://firecoin',
+                      null, 'BitCoin Server',
+	                      username, password, "", "");
+	                      
+	    FireCoin.passwordManager.addLogin(extLoginInfo);
+	},
+	
+	getUsername: function() {
+		var login = FireCoin.passwordManager.findLogins({}, "chrome://firecoin", null, 'BitCoin Server');
+		return login[0].username;
+	},
+	
+	getPassword: function() {
+		var login = FireCoin.passwordManager.findLogins({}, "chrome://firecoin", null, 'BitCoin Server');
+		return login[0].password;
 	},
 	
 	/**
