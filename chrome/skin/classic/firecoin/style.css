@@ -14,7 +14,7 @@ toolbar[iconsize="small"] .firecoin-button-inactive {
   list-style-image: url("chrome://firecoin/skin/btn_small_inactive.png");
 }
 
-#mainDonateDialog {
+#mainDonateDialog,#mainSettingsDialog {
 	width:300px;
 	background-image: -moz-linear-gradient(
     center bottom,

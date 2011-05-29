@@ -1,28 +1,20 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://firecoin/skin/style.css" type="text/css"?>
 
+<dialog
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  id="mainSettingsDialog"
+  title="FireCoin Settings"
+  ondialogaccept="return onOK();"
+  onload="onLoad();"
+  persist="screenX screenY width height">
 
-<overlay id="firecoinSettingsDialog"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-
-<!-- This imports our javascript. -->
-
-<script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js">
-
-</script>
-
-<vbox id="mainDonateDialog">
-	<label id="donateTitle" value="Settings"/>
-	<label id="firecoinDonatingTo" value="Username"/>
-	<textbox id="firecoinUsernameBox" value="" />
-	<label id="firecoinDonatingTo" value="Password"/>
-	<textbox id="firecoinPasswordBox" value="" type="password"/>
-	<hbox id="firecoinButtonBox">
-		<button label="Cancel"
-		        oncommand="close()"/>
-		<button label="Save"
-		        oncommand="FireCoin.saveSettings();close();"/>
-	</hbox>
-</vbox>
-
-</overlay>
+  <script type="application/javascript" src="chrome://firecoin/content/settingsDialog.js"/>
+  <grid>
+    <columns><column/><column/></columns>
+    <rows>
+      <row align="center"><label value="Username:"/><textbox id="firecoinUsernameBox"/></row>
+      <row align="center"><label value="Password:"/><textbox id="firecoinPasswordBox" type="password"/></row>
+    </rows>
+  </grid>
+</dialog>
