@@ -2,6 +2,7 @@ Makes it easier for you to donate Bitcoins to siteowners with firefox.
 
 Changelog
 =======
+* 31 May, 2011: Made the donate dialog an actual dialog. Added possibility to add a message as a meta
 * 29 May, 2011: Settings function done.
 * 28 May, 2011: Started implementing save settings function
 * 22 May, 2011: Donation dialog done. Settings dialog done.

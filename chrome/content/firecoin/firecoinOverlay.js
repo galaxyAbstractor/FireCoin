@@ -18,8 +18,22 @@ var FireCoin = {
 	                                getService(Components.interfaces.nsILoginManager),
 	
 	onclick: function() {
+		// Get the BitCoin address
+		var address = FireCoin.getMetaContents("bitcoin",content.document.getElementsByTagName("meta"));
+		// Get the message
+		var message = FireCoin.getMetaContents("bitcoinmsg",content.document.getElementsByTagName("meta"));
+		// Check if there was a message or not, if not, set the message to "No message specified"
+		message = message != "nope.avi" ? message : "No message specified";
+		
+		var params = {inn:{firecoinDonatingAddress:address, firecoinMessageBox:message}, out:null};
 		window.openDialog("chrome://firecoin/content/donateDialogOverlay.xul", "Donate BitCoins",
-"chrome,dialog=yes,modal=yes,centerscreen", "dialogParameter");
+"chrome,dialog=yes,modal=yes,centerscreen", params);
+
+		if (params.out) {
+		    
+	    } else {
+	    // User clicked cancel. Typically, nothing is done here.
+	    }
 	},
 	
 	openSettings: function() {
@@ -27,26 +41,26 @@ var FireCoin = {
 		window.openDialog("chrome://firecoin/content/firecoinSettingsDialog.xul", "Settings",
 "chrome,dialog=yes,modal=yes,centerscreen", params);
 
-	if (params.out) {
-    	// Register nsLoginInfo
-		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
-                                           Components.interfaces.nsILoginInfo,
-                                           "init");
-		
-		var extLoginInfo = new nsLoginInfo('chrome://firecoin',
-                      null, 'BitCoin Server',
-	                      params.out.username, params.out.password, "", "");
-	    
-	    var oldLogin = FireCoin.getLogin();                 
-	    if(oldLogin != null) {
-	    	FireCoin.passwordManager.modifyLogin(oldLogin, extLoginInfo);
-	    } else {   
-	    	FireCoin.passwordManager.addLogin(extLoginInfo);
+		if (params.out) {
+	    	// Register nsLoginInfo
+			var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
+	                                           Components.interfaces.nsILoginInfo,
+	                                           "init");
+			
+			var extLoginInfo = new nsLoginInfo('chrome://firecoin',
+	                      null, 'BitCoin Server',
+		                      params.out.username, params.out.password, "", "");
+		    
+		    var oldLogin = FireCoin.getLogin();                 
+		    if(oldLogin != null) {
+		    	FireCoin.passwordManager.modifyLogin(oldLogin, extLoginInfo);
+		    } else {   
+		    	FireCoin.passwordManager.addLogin(extLoginInfo);
+		    }
+	    } else {
+	    // User clicked cancel. Typically, nothing is done here.
 	    }
-    } else {
-    // User clicked cancel. Typically, nothing is done here.
-    }
-		
+			
 	},
 	
 	

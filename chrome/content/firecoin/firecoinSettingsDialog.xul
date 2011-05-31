@@ -5,8 +5,9 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="mainSettingsDialog"
   title="FireCoin Settings"
-  ondialogaccept="return onOK();"
-  onload="onLoad();"
+  buttons="accept,cancel,help"
+  ondialogaccept="return FireCoin.onOK();"
+  onload="FireCoin.onLoad();"
   persist="screenX screenY width height">
 
   <script type="application/javascript" src="chrome://firecoin/content/settingsDialog.js"/>

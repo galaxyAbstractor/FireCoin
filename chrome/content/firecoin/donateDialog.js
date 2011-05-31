@@ -16,8 +16,8 @@ var FireCoin = {
 // Called once when the dialog displays
 	onLoad: function() {
 	  // Use the arguments passed to us by the caller
-	  document.getElementById("firecoinUsernameBox").value = window.arguments[0].inn.firecoinUsernameBox;
-	  document.getElementById("firecoinPasswordBox").value = window.arguments[0].inn.firecoinPasswordBox;
+	  document.getElementById("firecoinDonatingAddress").value = window.arguments[0].inn.firecoinDonatingAddress;
+	  document.getElementById("firecoinMessageBox").value = window.arguments[0].inn.firecoinMessageBox;
 	},
 	
 	// Called once if and only if the user clicks OK
