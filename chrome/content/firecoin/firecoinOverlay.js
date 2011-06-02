@@ -13,9 +13,6 @@
 ********************************************************************/
 
 var FireCoin = {
-	// Register a new Password Manager
-	passwordManager: Components.classes["@mozilla.org/login-manager;1"].
-	                                getService(Components.interfaces.nsILoginManager),
 	
 	onclick: function() {
 		// Get the BitCoin address
@@ -34,40 +31,6 @@ var FireCoin = {
 	    } else {
 	    // User clicked cancel. Typically, nothing is done here.
 	    }
-	},
-	
-	openSettings: function() {
-		var params = {inn:{firecoinUsernameBox:FireCoin.getLogin().username, firecoinPasswordBox:FireCoin.getLogin().password}, out:null};       
-		window.openDialog("chrome://firecoin/content/firecoinSettingsDialog.xul", "Settings",
-"chrome,dialog=yes,modal=yes,centerscreen", params);
-
-		if (params.out) {
-	    	// Register nsLoginInfo
-			var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1",
-	                                           Components.interfaces.nsILoginInfo,
-	                                           "init");
-			
-			var extLoginInfo = new nsLoginInfo('chrome://firecoin',
-	                      null, 'BitCoin Server',
-		                      params.out.username, params.out.password, "", "");
-		    
-		    var oldLogin = FireCoin.getLogin();                 
-		    if(oldLogin != null) {
-		    	FireCoin.passwordManager.modifyLogin(oldLogin, extLoginInfo);
-		    } else {   
-		    	FireCoin.passwordManager.addLogin(extLoginInfo);
-		    }
-	    } else {
-	    // User clicked cancel. Typically, nothing is done here.
-	    }
-			
-	},
-	
-	
-	
-	getLogin: function() {
-		var login = FireCoin.passwordManager.findLogins({}, "chrome://firecoin", null, 'BitCoin Server');
-		return login[0];
 	},
 	
 	/**
