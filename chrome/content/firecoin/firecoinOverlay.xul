@@ -6,10 +6,7 @@
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 <!-- This imports our javascript. -->
-
-<script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js">
-
-</script>
+<script type="application/x-javascript" src="chrome://firecoin/content/firecoinOverlay.js" />
 
 <toolbarpalette id="BrowserToolbarPalette">
 <toolbarbutton id="firecoin-button" class="toolbarbutton-1 firecoin-button-inactive"

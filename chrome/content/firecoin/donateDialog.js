@@ -27,6 +27,7 @@ var FireCoin = {
 	  // Use the arguments passed to us by the caller
 	  document.getElementById("firecoinDonatingAddress").value = window.arguments[0].inn.firecoinDonatingAddress;
 	  document.getElementById("firecoinMessageBox").value = window.arguments[0].inn.firecoinMessageBox;
+	  document.getElementById("firecoinBalanceValue").value = window.arguments[0].inn.firecoinBalanceValue;
 	},
 	
 	// Called once if and only if the user clicks OK

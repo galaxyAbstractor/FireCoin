@@ -13,8 +13,10 @@
 ********************************************************************/
 
 var FireCoin = {
-	
 	onclick: function() {
+		// Get the current balance
+		var balance = FireCoin.sendRequest("getinfo", []);
+		
 		// Get the BitCoin address
 		var address = FireCoin.getMetaContents("bitcoin",content.document.getElementsByTagName("meta"));
 		// Get the message
@@ -22,7 +24,7 @@ var FireCoin = {
 		// Check if there was a message or not, if not, set the message to "No message specified"
 		message = message != "nope.avi" ? message : "No message specified";
 		
-		var params = {inn:{firecoinDonatingAddress:address, firecoinMessageBox:message}, out:null};
+		var params = {inn:{firecoinDonatingAddress:address, firecoinMessageBox:message, firecoinBalanceValue:balance}, out:null};
 		window.openDialog("chrome://firecoin/content/donateDialogOverlay.xul", "Donate BitCoins",
 "chrome,dialog=yes,modal=yes,centerscreen", params);
 
@@ -46,6 +48,31 @@ var FireCoin = {
 		}
 		// meta tag not found
 		return "nope.avi";
+	}, 
+	
+	/**
+	 * Sends a JSON-RPC call to the bitcoin server
+	 * @param m the method to call
+	 * @param p the params to send the method
+	 * @return a JSON object containing the response from bitcoin
+	 */
+	sendRequest: function(m, p) {
+		var http = new XMLHttpRequest();
+		var url = "http://viggeswe:lol@127.0.0.1:8332/'";
+		var params = {jsonrpc: "1.0",method: m, params: p, id: "jsonrpc"};
+		http.open("POST", url, true);
+		
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "text/x-json");
+		http.setRequestHeader("Content-length", params.length);
+		http.setRequestHeader("Connection", "close");
+		
+		http.onreadystatechange = function() {//Call a function when the state changes.
+			if(http.readyState == 4 && http.status == 200) {
+				    return http.responseText;
+			}
+		}
+		http.send(JSON.stringify(params));
 	}
 }
  

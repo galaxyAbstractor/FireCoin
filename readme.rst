@@ -2,6 +2,7 @@ Makes it easier for you to donate Bitcoins to siteowners with firefox.
 
 Changelog
 =======
+* 07 Jun, 2011: Started implementing JSON-RPC requests. Will need to make it wait for reply before using data.
 * 02 Jun, 2011: Back with the settings button in the donation dialog. Added onchange on the amount scroller so the total and remaining is updated.
 * 31 May, 2011: Made the donate dialog an actual dialog. Added possibility to add a message as a meta
 * 29 May, 2011: Settings function done.
