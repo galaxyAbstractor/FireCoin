@@ -8,11 +8,9 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="mainSettingsDialog"
   title="FireCoin Settings"
-  buttons="accept,cancel,extra1"
+  buttons="accept,cancel"
   ondialogaccept="return FireCoin.onOK();"
   onload="FireCoin.onLoad();"
-  ondialogextra1="FireCoin.onExtra();"
-  buttonlabelextra1="Settings"
   buttonlabelaccept="Donate"
   persist="screenX screenY width height">
   <script type="application/x-javascript" src="chrome://firecoin/content/donateDialog.js">
@@ -24,7 +22,7 @@
 	<label id="firecoinMessage" value="Message"/>
 	<textbox id="firecoinMessageBox" value="No message specified by the site No message specified by the site No message specified by the site" rows="2" multiline="true" readonly="true"/>
 	<label id="firecoinAmount" value="Amount"/>
-	<textbox id="firecoinAmountBox" value="" type="number" decimalplaces="2" min="0.00" increment="0.01" onchange="FireCoin.onChange()" />
+	<textbox id="firecoinAmountBox" value="" type="number" decimalplaces="8" min="0.00" increment="0.01" onchange="FireCoin.onChange()" />
 	<commandset><command id="checked" oncommand="FireCoin.onChange()"/></commandset>
 	<checkbox id="firecoinDonateToAuthor" label="Donate 5% to Addon Author?" checked="false" command="checked"/>
 	<spacer height="5"/>
@@ -41,5 +39,6 @@
 		<label id="firecoinRemaining" value="Remaining: "/>
 		<label id="firecoinRemainingValue" value="0.00"/>
 	</hbox>
+	<label value="Transaction fees are not included" />
 
 </dialog>

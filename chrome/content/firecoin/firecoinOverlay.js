@@ -14,9 +14,24 @@
 
 var FireCoin = {
 	onclick: function() {
-		// Get the current balance
-		var balance = FireCoin.sendRequest("getinfo", []);
-		
+		// Get the BitCoin address
+		var address = FireCoin.getMetaContents("bitcoin",content.document.getElementsByTagName("meta"));
+		// Validate the address
+		FireCoin.sendRequest("validateaddress", [address], FireCoin.isValid);
+	},
+	
+	isValid: function (json) {
+		if(json.result.isvalid){
+			// The address is valid, open the dialog
+			FireCoin.sendRequest("getinfo", [], FireCoin.openDialog);
+		} else {
+			// A invalid address was provided
+			alert("This site didn't provide a valid bitcoin address");
+		}
+	},
+	
+	openDialog: function(json){
+		var balance = json.result.balance;
 		// Get the BitCoin address
 		var address = FireCoin.getMetaContents("bitcoin",content.document.getElementsByTagName("meta"));
 		// Get the message
@@ -29,17 +44,29 @@ var FireCoin = {
 "chrome,dialog=yes,modal=yes,centerscreen", params);
 
 		if (params.out) {
-		    
+			// Send the money to the site
+		    FireCoin.sendRequest("sendfrom", ["", params.out.address, params.out.amount, 1,"FireCoin donation"], FireCoin.vaildTransaction);
+		    if(params.out.toAuthorAmount != 0){
+		    	// The user chose to donate 5% to me, so send it to me
+		    	FireCoin.sendRequest("sendfrom", ["","msKEs37CnQWrvQmXuvcAQK8VFNf1JSpTrU", params.out.toAuthorAmount, 1,"FireCoin donation to Addon author - Thanks!"], FireCoin.vaildTransaction);
+		    }
 	    } else {
 	    // User clicked cancel. Typically, nothing is done here.
 	    }
+	},
+	
+	vaildTransaction: function(json) {
+		// Check for a valid transaction
+		if(json.result.error == null){
+			alert("Donation Sent!");
+		}
 	},
 	
 	/**
 	 * Get the content of a metatag
 	 * @param mn the name of the metatag <meta _name="mn"_ />
 	 */
-	getMetaContents:function(mn,m){
+	getMetaContents: function(mn,m){
 		
 		for(var i in m){
 			if(m[i].name == mn){
@@ -56,9 +83,9 @@ var FireCoin = {
 	 * @param p the params to send the method
 	 * @return a JSON object containing the response from bitcoin
 	 */
-	sendRequest: function(m, p) {
+	sendRequest: function(m, p, callback) {
 		var http = new XMLHttpRequest();
-		var url = "http://viggeswe:lol@127.0.0.1:8332/'";
+		var url = "http://127.0.0.1:8332/";
 		var params = {jsonrpc: "1.0",method: m, params: p, id: "jsonrpc"};
 		http.open("POST", url, true);
 		
@@ -69,7 +96,9 @@ var FireCoin = {
 		
 		http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-				    return http.responseText;
+				    callback(JSON.parse(http.responseText));
+			} else if(http.readyState == 4 && http.status != 200) {
+				alert("Cannot talk to Bitcoin server or the server closed the connection (this happens if the transaction wasn't possible). Are you sure it is running as a server? \n please read: https://en.bitcoin.it/wiki/Running_Bitcoin#Bitcoin.conf_Configuration_File and add the server=1 option to the config file")
 			}
 		}
 		http.send(JSON.stringify(params));
