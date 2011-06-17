@@ -1,4 +1,11 @@
-Makes it easier for you to donate Bitcoins to siteowners with firefox.
+Makes it easier for you to donate Bitcoins to siteowners with firefox. If you like the addon, please consider donating to me: 1KHTs795SKBd2yBfdfpf4BxArEq5RGrNZo
+
+What it does
+=======
+The plugin lets you discover bitcoin addresses provided by the site owner in the header section. When the toolbar button lights up, a bitcoin address has been provided 
+and you can press the button to donate.
+
+It also lets you select bitcoin addresses on pages, right-click on them and choose "Send Bitcoins". This makes it easy to send payments without opening the client.
 
 How To Use
 =======
@@ -17,6 +24,22 @@ it might cost 0.02BTC total.
 There is an option on every transaction to pay 5% extra to me. This will only be paid if you check the checkbox (disabled by default) "Donate 5% to addon author?", never anything else.
 
 You will have to authenticate to the JSON-RPC API once every browser session for security, but you will have the option to save the credentials with the firefox login manager.
+
+For site owners or developers!
+=======
+Bitcoinaddress detection works with meta tags in the header. They are named bitcoin, bitcoinmsg and bitcointhanks.
+
+To add your address to a page, add this to the <head> section of your HTML:
+	<meta name="bitcoin" content="1KHTs795SKBd2yBfdfpf4BxArEq5RGrNZo" />
+change your address accordingly
+
+You also have an option to leave a message to the donater, which is shown before donating:
+	<meta name="bitcoinmsg" content="With your donation, I will be able to keep the site running longer!" />
+	
+The last meta is bitcointhanks, which should hold an URL to a thanks page, like this:
+	<meta name="bitcointhanks" content="http://pixomania.net" />
+	
+Only the first meta is required, the rest is optional
 
 Changelog
 =======
