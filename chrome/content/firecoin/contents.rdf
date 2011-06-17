@@ -20,13 +20,5 @@ xmlns:chrome="http://www.mozilla.org/rdf/chrome#">
 		<RDF:li>chrome://httpproxifier/content/firecoinOverlay.xul</RDF:li>
 	</RDF:Seq>
 
-	<RDF:Description RDF:about="urn:mozilla:package:firecoin"
-		chrome:displayName="FireCoin v 1.0"
-		chrome:author="galaxyAbstractor"
-		chrome:authorURL="mailto:galaxyAbstractor@gmail.com"
-		chrome:name="FireCoin"
-		chrome:extension="true"
-		chrome:description="Easily donate BTC to siteowners">
-	</RDF:Description>
 
 </RDF:RDF>

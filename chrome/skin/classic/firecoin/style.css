@@ -16,6 +16,7 @@ toolbar[iconsize="small"] .firecoin-button-inactive {
 
 #mainDonateDialog,#mainSettingsDialog {
 	width:300px;
+	background-color: #ffffff;
 	background-image: -moz-linear-gradient(
     center bottom,
     rgb(232,232,232) 0%,

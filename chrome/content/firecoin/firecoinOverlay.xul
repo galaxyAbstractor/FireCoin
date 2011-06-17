@@ -14,4 +14,9 @@
     onclick="FireCoin.onclick();"/>
 </toolbarpalette>
 
+<popup id="contentAreaContextMenu">
+	<menuitem id="sendBitcoinsMenuItem" label="Send BitCoins" oncommand="FireCoin.sendBitcoins();"
+	            insertafter="context-selectall"/>
+</popup>
+
 </overlay>

@@ -1,6 +1,5 @@
 overlay	chrome://browser/content/browser.xul	chrome://firecoin/content/firecoinOverlay.xul
 overlay	chrome://navigator/content/navigator.xul	chrome://firecoin/content/firecoinOverlay.xul
-overlay chrome://firecoin/content/donateDialogOverlay.xul
 content	firecoin	chrome/content/firecoin/
 
 skin	firecoin	classic/1.0	chrome/skin/classic/firecoin/

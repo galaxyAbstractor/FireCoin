@@ -13,7 +13,7 @@
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>1.5</em:minVersion>
+        <em:minVersion>3.5</em:minVersion>
         <em:maxVersion>4.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
@@ -23,5 +23,6 @@
     <em:description>Easily donate BTC to siteowners</em:description>
     <em:creator>galaxyAbstractor</em:creator>
     <em:homepageURL>http://www.pixomania.net/</em:homepageURL>
+    <em:iconURL>chrome://firecoin/skin/icon.png</em:iconURL>
   </Description>      
 </RDF>
