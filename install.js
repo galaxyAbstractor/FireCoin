@@ -6,7 +6,7 @@ var XpiInstaller = {
 	// --- Editable items begin ---
 	extFullName: 'FireCoin', // The name displayed to the user (don't include the version)
 	extShortName: 'firecoin', // The leafname of the JAR file (without the .jar part)
-	extVersion: '1.0',
+	extVersion: '1.1',
 	extAuthor: 'galaxyAbstractor',
 	extLocaleNames: null, // e.g. ['en-US', 'en-GB']
 	extSkinNames: null, // e.g. ['classic', 'modern']

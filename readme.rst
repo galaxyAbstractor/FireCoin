@@ -1,4 +1,4 @@
-Makes it easier for you to donate Bitcoins to siteowners with firefox. If you like the addon, please consider donating to me: 1KHTs795SKBd2yBfdfpf4BxArEq5RGrNZo
+Makes it easier for you to donate Bitcoins to siteowners with firefox. If you like the addon, please consider donating to me: 1KHTs795SKBd2yBfdfpf4BxArEq5RGrNZo - http://btc.to/2y
 
 What it does
 =======
@@ -6,6 +6,8 @@ The plugin lets you discover bitcoin addresses provided by the site owner in the
 and you can press the button to donate.
 
 It also lets you select bitcoin addresses on pages, right-click on them and choose "Send Bitcoins". This makes it easy to send payments without opening the client.
+
+In version 1.1, http://btc.to integration was added, meaning that you can use btc.to shortened addresses instead of normal long addresses.
 
 How To Use
 =======
@@ -43,6 +45,7 @@ Only the first meta is required, the rest is optional
 
 Changelog
 =======
+* 25 Jun, 2011: Added http://btc.to integration. Version 1.1
 * 17 Jun, 2011: Version 1 released!
 * 16 Jun, 2011: Almost done. Balance works. Transaction works. Need some final touches though. Currently runs on Testnet.
 * 07 Jun, 2011: Started implementing JSON-RPC requests. Will need to make it wait for reply before using data.

@@ -19,8 +19,16 @@ var FireCoin = {
 	onclick: function() {
 		// Get the BitCoin address
 		var address = FireCoin.getMetaContents("bitcoin",content.document.getElementsByTagName("meta"));
-		// Validate the address
-		FireCoin.sendRequest("validateaddress", [address], null, FireCoin.isValid);
+		
+		// Check if it's a btc.to address
+		if(address.substring(0,13) === "http://btc.to"){
+			FireCoin.getbtcto(address, false);
+		} else if(address.substring(0,6) === "btc.to"){
+			FireCoin.getbtcto(address, false);
+		} else {
+			FireCoin.sendRequest("validateaddress", [address], null, FireCoin.isValid);
+		}
+		
 	},
 	
 	/**
@@ -29,6 +37,7 @@ var FireCoin = {
 	 * @param extra an extra argument, used to hold the address if it's from a selection
 	 */
 	isValid: function (json, extra) {
+		
 		if(json.result.isvalid){
 			// The address is valid, open the dialog
 			FireCoin.sendRequest("getinfo", [], extra, FireCoin.openDialog);
@@ -117,7 +126,14 @@ var FireCoin = {
 	sendBitcoins: function(){
 		// Get the selected text
 		var address = document.commandDispatcher.focusedWindow.getSelection().toString();
-		FireCoin.sendRequest("validateaddress", [address], address, FireCoin.isValid);
+		// Check if it's a btc.to address
+		if(address.substring(0,13) === "http://btc.to"){
+			FireCoin.getbtcto(address, true);
+		} else if(address.substring(0,6) === "btc.to"){
+			FireCoin.getbtcto(address, true);
+		}else {
+			FireCoin.sendRequest("validateaddress", [address], address, FireCoin.isValid);
+		}
 	},
 	
 	/**
@@ -173,6 +189,32 @@ var FireCoin = {
 			}
 		}
 		http.send(JSON.stringify(params));
+	},
+	
+	/**
+	 * Implements btc.to functionallity. With this you can now use btc.to address shortener together with the addon
+	 * @param url the btc.to url
+	 * @param selected a boolean to indicate if this was from a selection or not
+	 */
+	getbtcto: function(url, selected){
+		var http = new XMLHttpRequest();
+		http.open("get", url, true);
+		
+		//Send the proper header information along with the request
+		http.setRequestHeader("Connection", "close");
+		
+		http.onreadystatechange = function() {//Call a function when the state changes.
+			if(http.readyState == 4 && http.status == 200) {
+				if(selected){
+					FireCoin.sendRequest("validateaddress", [http.responseText], http.responseText, FireCoin.isValid);
+				} else {
+					FireCoin.sendRequest("validateaddress", [http.responseText], null, FireCoin.isValid);
+				}
+			} else if(http.readyState == 4 && http.status != 200) {
+				alert("Cannot connect to btc.to's server!");
+			}
+		}
+		http.send();
 	}
 }
 
