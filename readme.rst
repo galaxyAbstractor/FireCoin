@@ -1,4 +1,5 @@
 Makes it easier for you to donate Bitcoins to siteowners with firefox. If you like the addon, please consider donating to me: 1KHTs795SKBd2yBfdfpf4BxArEq5RGrNZo - http://btc.to/2y
+Addon at AMO: https://addons.mozilla.org/en-US/firefox/addon/firecoin/
 
 What it does
 =======
